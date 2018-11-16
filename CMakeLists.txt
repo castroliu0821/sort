@@ -21,6 +21,7 @@ cmake_minimum_required(VERSION 2.8)
 ################################################################################
 
 SET(PRIVATE_STATIC_LIBRARY
+    "pthread"
     "${CMAKE_CURRENT_SOURCE_DIR}/google/lib/libgtest.a"
     "${CMAKE_CURRENT_SOURCE_DIR}/google/lib/libgtest_main.a"
 )
@@ -64,6 +65,7 @@ INCLUDE_DIRECTORIES(
 ################################################################################
 SET(PRIVATE_STATIC_SOURCE
     "${CMAKE_CURRENT_SOURCE_DIR}/quicksort.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/heapsort.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/main.cpp"
 )
 
