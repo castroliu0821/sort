@@ -4,7 +4,7 @@
 
 #include "quicksort.h"
 #include "heapsort.h"
-#include <hashtable.h>
+#include "mergesort.h"
 
 using namespace std;
 
@@ -18,6 +18,15 @@ public:
 };
 
 class quicksortCase : public ::testing::Test {
+protected:
+    virtual void SetUp() {
+    }
+
+    virtual void TearDown() {
+    }
+};
+
+class mergesortCase : public ::testing::Test {
 protected:
     virtual void SetUp() {
     }
@@ -57,6 +66,15 @@ TEST_F(quicksortCase, case_1_arr) {
 }
 
 TEST_F(quicksortCase, case_2_arr) {
+    int arr[] = {3, 1};
+    int buf[2] = {1, 3};
+    int len = sizeof(arr) / sizeof(arr[0]);
+
+    quicksort(arr, len);
+    EXPECT_TRUE(0 == memcmp(arr, buf, sizeof(arr)));
+}
+
+TEST_F(quicksortCase, case_3_arr) {
     int arr[3] = {3, 1, 2};
     int buf[3] = {1, 2, 3};
     int len = sizeof(arr) / sizeof(arr[0]);
@@ -84,6 +102,15 @@ TEST_F(heapsortCase, case_1_arr) {
 }
 
 TEST_F(heapsortCase, case_2_arr) {
+    int arr[] = {3, 1};
+    int buf[2] = {1, 3};
+    int len = sizeof(arr) / sizeof(arr[0]);
+
+    heapsort(arr, len);
+    EXPECT_TRUE(0 == memcmp(arr, buf, sizeof(arr)));
+}
+
+TEST_F(heapsortCase, case_3_arr) {
     int arr[3] = {3, 1, 2};
     int buf[3] = {1, 2, 3};
     int len = sizeof(arr) / sizeof(arr[0]);
@@ -98,5 +125,59 @@ TEST_F(heapsortCase, case_10_arr) {
     int len = sizeof(arr) / sizeof(arr[0]);
 
     heapsort(arr, len);
+    EXPECT_TRUE(0 == memcmp(arr, buf, sizeof(arr)));
+}
+
+TEST_F(heapsortCase, case_11_arr) {
+    int arr[11] = {3, 1, 2, 11, 6, 9, 10, 5, 7, 4, 8};
+    int buf[11] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
+    int len = sizeof(arr) / sizeof(arr[0]);
+
+    heapsort(arr, len);
+    EXPECT_TRUE(0 == memcmp(arr, buf, sizeof(arr)));
+}
+
+TEST_F(mergesortCase, case_1_arr) {
+    int arr[1] = {0};
+    int buf[1] = {0};
+    int len = sizeof(arr) / sizeof(arr[0]);
+
+    mergesort(arr, len);
+    EXPECT_TRUE(0 == memcmp(arr, buf, sizeof(arr)));
+}
+
+TEST_F(mergesortCase, case_2_arr) {
+    int arr[] = {3, 1};
+    int buf[2] = {1, 3};
+    int len = sizeof(arr) / sizeof(arr[0]);
+
+    mergesort(arr, len);
+    EXPECT_TRUE(0 == memcmp(arr, buf, sizeof(arr)));
+}
+
+TEST_F(mergesortCase, case_3_arr) {
+    int arr[3] = {3, 1, 2};
+    int buf[3] = {1, 2, 3};
+    int len = sizeof(arr) / sizeof(arr[0]);
+
+    mergesort(arr, len);
+    EXPECT_TRUE(0 == memcmp(arr, buf, sizeof(arr)));
+}
+
+TEST_F(mergesortCase, case_10_arr) {
+    int arr[10] = {3, 1, 2, 6, 9, 10, 5, 7, 4, 8};
+    int buf[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    int len = sizeof(arr) / sizeof(arr[0]);
+
+    mergesort(arr, len);
+    EXPECT_TRUE(0 == memcmp(arr, buf, sizeof(arr)));
+}
+
+TEST_F(mergesortCase, case_11_arr) {
+    int arr[11] = {3, 1, 2, 11, 6, 9, 10, 5, 7, 4, 8};
+    int buf[11] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
+    int len = sizeof(arr) / sizeof(arr[0]);
+
+    mergesort(arr, len);
     EXPECT_TRUE(0 == memcmp(arr, buf, sizeof(arr)));
 }

@@ -66,6 +66,7 @@ INCLUDE_DIRECTORIES(
 SET(PRIVATE_STATIC_SOURCE
     "${CMAKE_CURRENT_SOURCE_DIR}/quicksort.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/heapsort.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/mergesort.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/main.cpp"
 )
 
